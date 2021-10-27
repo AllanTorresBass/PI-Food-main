@@ -4,7 +4,11 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('recipe', {
-    
+    id: {
+       type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,10 +26,13 @@ module.exports = (sequelize) => {
     },
     instructions: {
       type: DataTypes.TEXT,
+    },
+    dietTypes: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
     }
   },{
     // timestamps: false
-    timestamps: false,
+    timestamps: true,
     createdAt: false,
     updatedAt: 'actualizado'
   });
